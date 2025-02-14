@@ -30,7 +30,7 @@ class Category(models.Model):
             existing = get_object_or_404(Category, id=self.id)
             if existing.icon != self.icon:
                 existing.icon.delete(save=False)
-        super(Category, self.save(*args, **kwargs))
+        super().save(*args, **kwargs)
 
     @receiver(models.signals.pre_delete, sender="server.Category")
     def category_delete_files(sender, instance, **kwargs):
@@ -89,7 +89,7 @@ class Channel(models.Model):
                 existing.icon.delete(save=False)
             if existing.banner != self.banner:
                 existing.banner.delete(save=False)
-        super(Category, self.save(*args, **kwargs))
+        super().save(*args, **kwargs)
 
     @receiver(models.signals.pre_delete, sender="server.Server")
     def category_delete_files(sender, instance, **kwargs):
